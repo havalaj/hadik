@@ -6,7 +6,14 @@ import pygame.locals
 import time
 
 if __name__ == "__main__":
+    fps=30
+    fpsclock=pygame.time.Clock()
+
     screen = pygame.display.set_mode((500, 800))
+    pygame.display.set_caption("Hadik")
+    screen.fill((0, 100, 0))
+
+    krok = 1
 
     for x in range(1, 5, 1):
         print(x)
@@ -32,8 +39,17 @@ if __name__ == "__main__":
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-            if event.type == pygame.KEYDOWN:
-                    poloha_hada_y = poloha_hada_y - 1
+
+            key_input = pygame.key.get_pressed()   
+            if key_input[pygame.K_LEFT]:
+                poloha_hada_x -= krok
+            if key_input[pygame.K_UP]:
+                poloha_hada_y -= krok
+            if key_input[pygame.K_RIGHT]:
+                poloha_hada_x += krok
+            if key_input[pygame.K_DOWN]:
+                poloha_hada_y += krok
+
 
 
             # if event.tty == pygame.K_w:
@@ -46,7 +62,7 @@ if __name__ == "__main__":
         zaciatok_x = 30
         zaciatok_y = 30    
         sirka_kocky = 30
-        vyska_kocky = 40
+        vyska_kocky = 30
 
         
 
